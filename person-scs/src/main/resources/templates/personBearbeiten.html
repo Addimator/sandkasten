@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Person bearbeiten</title>
+</head>
+<body>
+
+    <h1>Person bearbeiten</h1>
+
+    <form method="post">
+        <button class="btn btn-outline-danger btn-sm" name="action" type="submit" value="delete">Person löschen</button>
+    </form>
+
+    <div class="container">
+
+        <form method = "post">
+
+            <table>
+                <tr>
+                    <td> Name: </td>
+                    <td><input name="name" th:value="${person?.name}" type="text"></td>
+                </tr>
+                <tr>
+                    <td> Jahreslohn: </td>
+                    <td><input name="jahreslohn" th:value="${person?.jahreslohn}" type="number"></td>
+                </tr>
+                <tr>
+                    <td> Kontaktdaten: </td>
+                    <td><input name="kontaktdaten" th:value="${person?.kontaktdaten}" type="text"></td>
+                </tr>
+                <tr>
+                    <td> Skills: </td>
+                    <td><input name="skills" th:value="${person?.skills}" type="text"></td>
+                </tr>
+            </table>
+            <br>
+            <button class="btn btn-default btn-sm" name="action" type="submit" value="edit">Änderungen speichern</button>
+
+        </form>
+
+    </div>
+</body>
+
+</html>

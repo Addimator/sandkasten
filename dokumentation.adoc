@@ -1,0 +1,21 @@
+# Dokumentation
+
+## Adrian Prinz (GitHub: Addimator)
+
+### 29.12.2018
+
+* Ich lese mich in das genauer in die Aufgabenstellung ein und bespreche mich mit meinem Teamkollegen
+* Wir beschließen uns zunächst um das Dockerfile und um die .yml-Datei zu kümmern, da dieses unabhängig von der Funktionalität funktionieren sollte und auch als erster Arbeitsschritt angegeben ist.
+* Nach stundenlangen recherchieren funktioniert es bei uns beiden trotzdem leider noch nicht, der Stacktrace ist leider ungenau und wir drehen uns im Kreis, da wir einfach nicht weiterkommen.
+* Wir beschließen in Kürze schonmal das Programm zum laufen zu bekommen und uns erst später mit Docker zu beschäftigen.
+
+### 30.01.2018
+
+* Leider habe ich den Zusammenhang verstanden, dass ich mir einfach Postgresql in einem Dockercontainer laufen lassen kann und dieser dann die Arbeit für mich übernimmt.
+* Nach stundenlangen Installieren von Postgresql und setzen von Passwörtern und ähnlichen ohne Erfolg gebe ich entnervt für den Tag auf, da ich das Programm einfach nicht zum laufen bekomme.
+
+### 02.01.2019
+
+* Nachdem mein Teamkollege mir erklärte, dass ich einfach einen Dockercontainer laufen lassen kann läuft es endlich.
+* Ich implementiere die Funktion, dass man Personen hinzufügen kann und die Funktion, dass man Personen ändern kann.
+* Leider bekomme ich es noch nicht hin, dass die Werte auch wirklich übergeben werden, irgendwo habe ich noch einen Bug, dass nur null-Werte übergeben werden.

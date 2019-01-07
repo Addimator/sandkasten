@@ -1,0 +1,47 @@
+version: "3.1"
+services:
+  proxy:
+    image: nginx:1.15-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./proxy/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy/conf/domain.conf:/etc/nginx/domain.conf:ro
+    depends_on:
+      - person
+
+  # ========================================
+  # Falls Sie das Person-SCS implementieren,
+  # überschreiben Sie diesen Teil
+  person:
+    image: hashicorp/http-echo
+    depends_on:
+      - persondb
+    links:
+      - persondb
+    environment:
+      - POSTGRES_DATABASE=propra
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_NAME=propra
+
+  persondb:
+    image: postgres
+    environment:
+      - POSTGRES_DATABASE=propra
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_NAME=propra
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  # # ========================================
+  # # Falls Sie das Projekt-SCS implementieren,
+  # # überschreiben Sie diesen Teil
+  # projekt:
+  #   image: hashicorp/http-echo
+  #   command: -listen=:8080 -text="Hello from projekt"
+  #
+  # projektdb:
+  #   image: hashicorp/http-echo
+  #   command: -listen=:3306 -text="I am just a dummy"
+  # # ========================================

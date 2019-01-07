@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Personen</title>
+</head>
+<body>
+    <h1>Personen</h1>
+
+    <a class="btn btn-primary btn-sm" role="button" th:href="@{/person/personErstellen}">Neue Person</a><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" th:each="person : ${personen}">
+                <p>
+                    <div class="border rounded">
+                        <p>
+                            <dl>
+                                <h4 th:text="${person.name}">Name</h4>
+                                    <dd th:text="'Jahreslohn: ' + ${#numbers.formatInteger(person.jahreslohn, 1, 'POINT')} + ' €'">Jahreslohn: 99999 €</dd>
+                                    <dd th:text="'Kontaktdaten: ' + ${person.kontaktdaten}">Kontaktdaten: vorname.nachname@example.com</dd>
+                                    <dd>
+                                        <span th:each="skill, iStat : ${person.skills}"
+                                              th:text="(${iStat.first}? 'Skills: ' : '') + ${skill} + (${iStat.last}? '' : ', ')">
+                                            Skills: Besondere Fähigkeiten
+                                        </span>
+                                    </dd>
+                                    <br>
+                                    <dt>Vergangene Projekte</dt>
+                                    <ul>
+                                        <li>Abgabesystem <a th:href="@{/projekt/{projektId}(projektId=${person.projektId})}">Projektbeschreibung</a> </li>
+                                    </ul>
+                                    <a th:href="@{/person/personBearbeiten/{personId}(personId=${person.id})}">Bearbeiten</a><br>
+                            </dl>
+                        </p>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
